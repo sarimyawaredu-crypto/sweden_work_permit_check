@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does my job offer qualify? · Swedish work permit salary check</title>
+<meta name="description" content="Check in seconds whether a job offer in Sweden meets the work permit salary requirement, including exemptions, the transition rule and the EU Blue Card.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Sweden · work permits · rules from 1 June 2026</p>
+    <h1>Does my job offer <em>qualify?</em></h1>
+    <p class="lede">The salary requirement changed in 2026, and it now depends on who you are, when you apply and what the job is. Enter an offer and see exactly which rule applies to you, and by how much you clear it.</p>
+  </div>
+</header>
+
+<main class="wrap grid">
+  <form id="form" class="card" autocomplete="off">
+    <fieldset>
+      <legend>The offer</legend>
+      <div class="salary-row">
+        <label class="grow">Gross salary (SEK)
+          <input id="salary" type="number" inputmode="numeric" min="0" step="100" value="36000" required>
+        </label>
+        <div class="seg" role="radiogroup" aria-label="Salary period">
+          <label><input type="radio" name="period" value="month" checked><span>per month</span></label>
+          <label><input type="radio" name="period" value="year"><span>per year</span></label>
+        </div>
+      </div>
+      <label>Date you apply
+        <input id="date" type="date" min="2025-07-01" required>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your situation</legend>
+      <div class="seg wide" role="radiogroup" aria-label="Application type">
+        <label><input type="radio" name="type" value="first" checked><span>First work permit</span></label>
+        <label><input type="radio" name="type" value="extension"><span>Extending a permit</span></label>
+      </div>
+      <label class="check" id="grantedWrap" hidden>
+        <input id="granted" type="checkbox"> My current permit was granted before 1 June 2026
+      </label>
+      <label>Do any of these describe you?
+        <select id="category">
+          <option value="">None of these</option>
+        </select>
+      </label>
+      <label>Is the job on the exempted occupations list?
+        <select id="occupation">
+          <option value="">No / not sure</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>EU Blue Card <span class="muted">(optional)</span></legend>
+      <label class="check"><input id="bc" type="checkbox"> Also check EU Blue Card eligibility</label>
+      <div id="bcFields" hidden>
+        <label class="check"><input id="bcDegree" type="checkbox" checked> I have a degree (180 credits) or 5 years of relevant experience</label>
+        <label>Length of employment contract (months)
+          <input id="bcMonths" type="number" min="0" value="12">
+        </label>
+      </div>
+    </fieldset>
+  </form>
+
+  <section class="card result" aria-live="polite">
+    <div id="verdict" class="verdict"></div>
+    <div class="meter" aria-hidden="true">
+      <div class="track"><div id="bar" class="bar"></div></div>
+      <div id="ticks" class="ticks"></div>
+    </div>
+    <p id="why" class="why"></p>
+    <dl id="facts" class="facts"></dl>
+    <div id="bcResult" class="bc" hidden></div>
+    <p class="caveat" id="caveat"></p>
+    <button id="share" type="button" class="ghost">Copy link to this result</button>
+  </section>
+
+  <section class="card table-card">
+    <h2>Today's numbers at a glance</h2>
+    <table id="ref"></table>
+    <p class="muted small">The median salary is updated by SCB every June, and the threshold follows the median that was current on the day you apply.</p>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p><strong>Not legal advice.</strong> Built from Migrationsverket's published rules, last verified <span id="verified"></span>. Always confirm on <a href="https://www.migrationsverket.se" rel="noopener">migrationsverket.se</a> before you sign.</p>
+  <p class="muted">Made by <a href="https://github.com/sarimyawaredu-crypto">Sarim Yawar</a>, an international student in Stockholm who needed this himself. <a href="https://github.com/sarimyawaredu-crypto/sweden_work_permit_check">Source on GitHub</a>.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
